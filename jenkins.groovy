@@ -8,7 +8,7 @@ pipeline {
         }
         stage('BUILD'){
             steps {
-        dir('FlightReservationApplication') {
+        dir('/cbz-three-tier-infra/flight-reservation-demo/FlightReservationApplication') {
           sh 'mvn clean package'
         }
       }
