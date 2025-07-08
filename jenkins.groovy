@@ -9,7 +9,7 @@ pipeline {
         stage('BUILD'){
             steps{
                 sh '''
-                    cd FlightReservationApplication
+                    cd /root/cbz-three-tier-infra/FlightReservationApplication/
                     mvn clean package
                 '''
             }
@@ -18,7 +18,7 @@ pipeline {
             steps{
                withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonar-token') {
                 sh '''
-                    cd FlightReservationApplication
+                    cd /root/cbz-three-tier-infra/FlightReservationApplication/
                     mvn sonar:sonar -Dsonar.projectKey=flight-reservation-demo 
                 '''
                 } 
@@ -34,7 +34,7 @@ pipeline {
         stage('Docker-Build'){
             steps{
                 sh '''
-                    cd FlightReservationApplication
+                    cd /root/cbz-three-tier-infra/FlightReservationApplication/
                     docker build -t rameshwar07/flight-reservation-demo:latest . 
                     docker push rameshwar07/flight-reservation-demo:latest
                     docker rmi rameshwar07/flight-reservation-demo:latest
@@ -44,7 +44,7 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh '''
-                    cd FlightReservationApplication
+                    cd /root/cbz-three-tier-infra/FlightReservationApplication/
                     kubectl apply -f k8s/
                 '''
             }
