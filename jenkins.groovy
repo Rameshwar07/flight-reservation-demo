@@ -9,7 +9,7 @@ pipeline {
         stage('BUILD'){
             steps{
                 sh '''
-                    cd flight-reservation-demo/FlightReservationApplication
+                    cd /FlightReservationApplication
                     mvn clean package
                 '''
             }
