@@ -7,11 +7,12 @@ pipeline {
             }
         }
         stage('BUILD'){
-            steps {
-        dir('/cbz-three-tier-infra/flight-reservation-demo/FlightReservationApplication') {
-          sh 'mvn clean package'
-        }
-      }
+        steps{
+                sh '''
+                    cd FlightReservationApplication
+                    mvn clean package
+                '''
+            }
         }
         stage('QA-TEST'){
             steps{
