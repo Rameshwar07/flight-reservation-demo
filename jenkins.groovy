@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('PULL'){
             steps{
-                git branch: 'main', url: 'https://github.com/mayurmwagh/flight-reservation-demo.git'
+                git branch: 'main', url: 'https://github.com/Rameshwar07/flight-reservation-demo.git'
             }
         }
         stage('BUILD'){
@@ -16,10 +16,10 @@ pipeline {
         }
         stage('QA-TEST'){
             steps{
-               withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonar-demo') {
+               withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonar-token') {
                 sh '''
                     cd FlightReservationApplication
-                    mvn sonar:sonar -Dsonar.projectKey=flight-reservation-backend-demo 
+                    mvn sonar:sonar -Dsonar.projectKey=flight-reservation-demo 
                 '''
                 } 
             }
@@ -35,9 +35,9 @@ pipeline {
             steps{
                 sh '''
                     cd FlightReservationApplication
-                    docker build -t mayurwagh/flight-reservation-demo:latest . 
-                    docker push mayurwagh/flight-reservation-demo:latest
-                    docker rmi mayurwagh/flight-reservation-demo:latest
+                    docker build -t rameshwar07/flight-reservation-demo:latest . 
+                    docker push rameshwar07/flight-reservation-demo:latest
+                    docker rmi rameshwar07/flight-reservation-demo:latest
                 '''
             }
         }
