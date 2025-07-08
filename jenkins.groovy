@@ -9,7 +9,7 @@ pipeline {
         stage('BUILD'){
         steps{
                 sh '''
-                    cd cbz-three-tier-infra/flight-reservation-demo/FlightReservationApplication
+                    cd /opt/FlightReservationApplication
                     mvn clean package
                 '''
             }
