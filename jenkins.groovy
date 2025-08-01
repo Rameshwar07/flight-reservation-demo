@@ -34,7 +34,7 @@ pipeline {
         stage('Docker-Build'){
             steps{
                 sh '''
-                    cd /root/cbz-three-tier-infra/FlightReservationApplication/
+                    cd /root/flight-reservation-application/
                     docker build -t rameshwar07/flight-reservation-demo:latest . 
                     docker push rameshwar07/flight-reservation-demo:latest
                     docker rmi rameshwar07/flight-reservation-demo:latest
@@ -44,7 +44,7 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh '''
-                    cd /root/cbz-three-tier-infra/FlightReservationApplication/
+                    cd /root/flight-reservation-application/
                     kubectl apply -f k8s/
                 '''
             }
