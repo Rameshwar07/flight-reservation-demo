@@ -9,7 +9,7 @@ pipeline {
         stage('BUILD'){
         steps{
                 sh '''
-                    cd /opt/FlightReservationApplication
+                    cd /opt/flight-reservation-application
                     mvn clean package
                 '''
             }
@@ -18,7 +18,7 @@ pipeline {
             steps{
                withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonar-token') {
                 sh '''
-                    cd /root/cbz-three-tier-infra/FlightReservationApplication/
+                    cd /root/flight-reservation-application/
                     mvn sonar:sonar -Dsonar.projectKey=flight-reservation-demo 
                 '''
                 } 
